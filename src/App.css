@@ -14,30 +14,3 @@
   width: 1200px;
   margin: 0 auto;
 }
-
-.header {
-  grid-area: header; 
-  border-bottom: 1px solid #6f7577;
-}
-
-.header img {
-  width: 60px;
-}
-
-.nav {
-  grid-area: nav;
-  border-right: 1px solid #6f7577;
-}
-
-.nav ul {
-  list-style: none;
-  font-size: 130%;
-}
-
-.content {
-  grid-area: cont
-}
-
-.content__header-img img {
-  width: 100%;
-}

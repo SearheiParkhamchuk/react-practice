@@ -1,0 +1,7 @@
+.content {
+    grid-area: cont
+}
+  
+.header__img img {
+    width: 100%;
+}
