@@ -1,0 +1,25 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialog {
+
+}
+
+.dialogsItems {
+
+}
+
+.dialogsItems .active {
+    text-decoration: underline;
+    color: #000;
+}
+
+.messages {
+
+}
+
+.message {
+
+}
