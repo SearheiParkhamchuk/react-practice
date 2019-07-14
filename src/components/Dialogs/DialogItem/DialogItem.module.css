@@ -1,0 +1,12 @@
+.dialog {
+
+}
+
+.dialog a {
+    text-decoration: none;
+}
+
+.dialog .active {
+    text-decoration: underline;
+    color: #000;
+}
