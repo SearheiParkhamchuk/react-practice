@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './MyPosts.module.css';
 import Post from './Posts/Posts';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/state';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/reducers/profile-reducer';
 
 const MyPosts = (props) => {
     const postsItems = props.posts.map(post => <Post avatarUrl={post.avatarUrl} title={post.title} />);
