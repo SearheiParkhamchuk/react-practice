@@ -18,26 +18,26 @@ const initalState = {
     newMessageBody: ''
 };
 
-const updateNewMessageBody = (state, text) => {
+const updateNewMessageBody = ({...state}, text) => {
     state.newMessageBody = text;
+    return state;
 };
 
-const sendMessage = (state) => {
+const sendMessage = ({...state}) => {
     state.messages.push({
         id: Math.random() * 100,
         message: state.newMessageBody
     });
     state.newMessageBody = '';
+    return state;
 };
 
 const dialogsReducer = (state = initalState, action) => {
     switch(action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
-            updateNewMessageBody(state, action.text);
-            return state;
+            return updateNewMessageBody(state, action.text);
         case SEND_MESSAGE:
-            sendMessage(state);
-            return state;
+            return sendMessage(state);
         default:
             return state;
     }

@@ -22,28 +22,29 @@ const initialState = {
     newPostText: 'ololl'
 };
 
-const addPost = (state) => {
+const addPost = ({...state}) => {
     state.posts.push(
         {
-            id: Math.random() * 100,
+            id: Math.round(Math.random() * 100),
             avatarUrl: "https://avatarko.ru/img/kartinka/2/igra_Mass_Effect_Tali_1686.jpg",
             title: state.newPostText
         })
-        state.newPostText = '';
+    state.newPostText = '';
+
+    return state;
 };
 
-const updateNewPostText = (state, newText) => {
+const updateNewPostText = ({...state}, newText) => {
     state.newPostText = newText;
+    return state;
 };
 
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_POST:
-            addPost(state);
-            return state;
+            return addPost(state);
         case UPDATE_NEW_POST_TEXT:
-            updateNewPostText(state, action.text);
-            return state;
+            return updateNewPostText(state, action.text);
         default:
             return state;
     }

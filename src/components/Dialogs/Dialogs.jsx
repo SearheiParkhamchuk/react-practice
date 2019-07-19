@@ -4,9 +4,10 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
-    const dialogItems = props.users.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
-    const messagesItems = props.messages.map(msg => <Message message={msg.message} />);
-    const defaultValue = props.newMessageBody;
+    const dialogs = props.dialogs;
+    const dialogItems = dialogs.users.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
+    const messagesItems = dialogs.messages.map(msg => <Message message={msg.message} />);
+    const defaultValue = dialogs.newMessageBody;
 
     const onSendMessage = () => {
         props.sendMessage();
