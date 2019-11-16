@@ -2,34 +2,36 @@ import React from 'react';
 import css from './MyPosts.module.css';
 import Post from './Posts/Posts';
 
-const MyPosts = (props) => {
-    const postsItems = props.posts.map(post => <Post avatarUrl={post.avatarUrl} title={post.title} />);
-    const addPost = () => {
-        props.addPost();
+class MyPosts extends React.Component {
+    addPost = () => {
+        this.props.addPost();
     };
 
-    const onPostChange = (event) => {
+    onPostChange = (event) => {
         const newValue = event.target.value;
-        props.updateNewPostText(newValue);
+        this.props.updateNewPostText(newValue);
     }
 
-    return (
-        <div>
-            My posts
+    render() {
+        const postsItems = this.props.posts.map(post => <Post avatarUrl={post.avatarUrl} title={post.title} />);
+        return (
             <div>
+                My posts
                 <div>
-                    <textarea onChange={ onPostChange } value={props.newPostText}></textarea>
+                    <div>
+                        <textarea onChange={ this.onPostChange } value={this.props.newPostText}></textarea>
+                    </div>
+                    <div>
+                        <button onClick={ this.addPost }>Add Post</button>
+                    </div>
                 </div>
-                <div>
-                    <button onClick={ addPost }>Add Post</button>
+                <div>New post</div>
+                <div className={css.posts}>
+                    { postsItems }
                 </div>
             </div>
-            <div>New post</div>
-            <div className={css.posts}>
-                { postsItems }
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default MyPosts;

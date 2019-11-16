@@ -2,7 +2,7 @@ const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
 const initalState = {
-    users: [
+    dialogs: [
         { name: 'Siarhei', id: 1},
         { name: 'Masha', id: 2},
         { name: 'Ivan', id: 3},
@@ -18,18 +18,22 @@ const initalState = {
     newMessageBody: ''
 };
 
-const updateNewMessageBody = ({...state}, text) => {
-    state.newMessageBody = text;
-    return state;
+const updateNewMessageBody = (state, text) => {
+    return {
+        ...state,
+        newMessageBody: text
+    }
 };
 
-const sendMessage = ({...state}) => {
-    state.messages.push({
-        id: Math.random() * 100,
-        message: state.newMessageBody
-    });
-    state.newMessageBody = '';
-    return state;
+const sendMessage = state => {
+    return {
+        ...state,
+        newMessageBody: '',
+        messages: [...state.messages, {
+            id: Math.random() * 100,
+            message: state.newMessageBody
+        }],
+    }
 };
 
 const dialogsReducer = (state = initalState, action) => {

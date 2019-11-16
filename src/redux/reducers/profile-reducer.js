@@ -22,22 +22,21 @@ const initialState = {
     newPostText: 'ololl'
 };
 
-const addPost = ({...state}) => {
-    state.posts.push(
-        {
-            id: Math.round(Math.random() * 100),
-            avatarUrl: "https://avatarko.ru/img/kartinka/2/igra_Mass_Effect_Tali_1686.jpg",
-            title: state.newPostText
-        })
-    state.newPostText = '';
+const addPost = state => {
+    const post = {
+        id: Math.round(Math.random() * 100),
+        avatarUrl: "https://avatarko.ru/img/kartinka/2/igra_Mass_Effect_Tali_1686.jpg",
+        title: state.newPostText
+    };
 
-    return state;
+    return {
+        ...state,
+        newPostText: '',
+        posts: [...state.posts, post]
+    };
 };
 
-const updateNewPostText = ({...state}, newText) => {
-    state.newPostText = newText;
-    return state;
-};
+const updateNewPostText = (state, newText) => ({ ...state, newPostText: newText });
 
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
