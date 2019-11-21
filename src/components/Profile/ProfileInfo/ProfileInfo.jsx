@@ -1,7 +1,7 @@
 import React from 'react';
-import css from './ProfileInfo.module.css';
 import avatar from './../../../assets/avatar.png';
 import { Preloader } from '../../Common/Preloader/preloader';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = props => {
     if (!props.profile) {
@@ -18,9 +18,7 @@ const ProfileInfo = props => {
 
     return (
         <div>
-            <div className={css.header__img}>
-                <img src="http://www.b17.ru/foto/uploaded/upl_1536215588_12069.jpg" alt="" />
-            </div>
+            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
             <div>
                 <div>
                     <img src={ props.profile.photos.small || avatar } alt='avatar'/>

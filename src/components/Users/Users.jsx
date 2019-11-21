@@ -8,6 +8,7 @@ export const Users = props => {
     for (let i=1; i <= pagesCount; i++) {
         pages.push(i);
     }
+
     return <div>
             <div>
                 {
@@ -16,7 +17,9 @@ export const Users = props => {
                 }
             </div>
             {
-                props.users.map(user => <div key={ user.id }>
+                props.users.map(user => {
+                    const isInProgress = props.followingInProgress.some(id => id === user.id);
+                    return <div key={ user.id }>
                     <span>
                         <div>
                             <NavLink to={'/profile/' + user.id}>
@@ -25,8 +28,14 @@ export const Users = props => {
                         </div>
                         <div>
                             { user.followed ?
-                                <button onClick={ () => { props.unFollow(user.id) } }>Unfollow</button> :
-                                <button onClick={ () => { props.follow(user.id) } }>Follow</button>
+                                <button
+                                    style={isInProgress ? { color: '#d6dfe2' } : { color: '#6f7577' }} disabled={isInProgress}
+                                    onClick={ () => props.userUnFollow(user.id)
+                                }>Unfollow</button> :
+                                <button
+                                    style={isInProgress ? { color: '#d6dfe2' } : { color: '#6f7577' }} disabled={isInProgress}
+                                    onClick={ () => props.userFollow(user.id)
+                                }>Follow</button>
                             }
                         </div>
                     </span>
@@ -40,7 +49,8 @@ export const Users = props => {
                             <div>{ user.city || 'unknown' }</div>
                         </span>
                     </span>
-                </div>)
+                </div>
+                })
             }
         </div>
 }
