@@ -7,12 +7,12 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginContainer from './components/Login/LoginContainer';
-import { connect }
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { initializeApp } from './redux/reducers/app-reducer';
 
 class App extends React.Component {
-	componentDidMount() {
-        this.props.getMyProfile();
-	}
 	render() {
 		return (
 			<div className='app-wrapper'>
@@ -28,5 +28,7 @@ class App extends React.Component {
 		);
 	}
 }
-
-export default connect(null, {getMyProfile})(App);
+export default compose(
+	withRouter,
+	connect(null, {initializeApp}),
+)(App)
