@@ -1,13 +1,9 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { getMyProfile } from '../../redux/reducers/auth-reducer';
+import { logout } from '../../redux/reducers/auth-reducer';
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        this.props.getMyProfile();
-    }
-
     render() {
         return <Header { ...this.props } />
     }
@@ -19,6 +15,6 @@ const mapState = state => ({
     profile: state.auth.profile
 });
 
-const mapDispatch = { getMyProfile }
+const mapDispatch = { logout }
 
 export default connect(mapState, mapDispatch)(HeaderContainer);

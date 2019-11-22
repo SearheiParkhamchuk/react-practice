@@ -55,3 +55,17 @@ export const followAPI = {
             .catch(e => {throw e});
     },
 }
+
+export const authAPI = {
+    login(email, password, rememberMe = false) {
+        return axiosSocial.post(`auth/login`, { email, password, rememberMe })
+            .then(response => response.data)
+            .catch(e => {throw e});
+    },
+
+    logout() {
+        return axiosSocial.delete(`auth/login`)
+            .then(response => response.data)
+            .catch(e => {throw e});
+    }
+}

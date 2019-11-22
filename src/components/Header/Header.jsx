@@ -8,6 +8,9 @@ const Header = props => {
         return <div>
             {props.profile ? <div style={{ display: 'inline-block' }}><img src={props.profile.photos.small ? props.photos.small : avatar} alt="avatar"/></div> : <></>}
             <div style={{ display: 'inline-block', verticalAlign: 'top' }}>{props.login}</div>
+            <div>
+                <button onClick={ props.logout }>Logout</button>
+            </div>
         </div>
     }
     return (

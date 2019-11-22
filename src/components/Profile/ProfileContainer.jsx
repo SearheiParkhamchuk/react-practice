@@ -8,7 +8,10 @@ import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        const userId = this.props.match.params.userId || 5217;
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = this.props.currentUserProfileId;
+        }
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId);
     }
@@ -27,6 +30,7 @@ const mapState = state => ({
     profile: state.profile.userProfile,
     status: state.profile.status,
     currentUserProfileId: state.auth.userId,
+    isAuth: state.auth.isAuth
 });
 
 const mapDispatch = {
