@@ -6,7 +6,7 @@ import avatar from './../../assets/avatar.png';
 const Header = props => {
     const loginUserView = () => {
         return <div>
-            {props.profile ? <div style={{ display: 'inline-block' }}><img src={props.profile.photos.small ? props.photos.small : avatar} alt="avatar"/></div> : <></>}
+            {props.userProfile ? <div style={{ display: 'inline-block' }}><img src={props.userProfile.photos.small ? props.userProfile.photos.small : avatar} alt="avatar"/></div> : <></>}
             <div style={{ display: 'inline-block', verticalAlign: 'top' }}>{props.login}</div>
             <div>
                 <button onClick={ props.logout }>Logout</button>

@@ -4,7 +4,7 @@ const axiosSocial = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers: {
-        'API-KEY': '8db5e338-cc95-413a-a1fc-b3045acfd180'
+        'API-KEY': '18a54f1c-c761-4fb6-a75a-e6b04e8fd2a6'
     }
 });
 
@@ -39,6 +39,17 @@ export const profileAPI = {
         return axiosSocial.put(`profile/status`, { status })
             .then(response => response.data)
             .catch(e => {throw e});
+    },
+
+    async savePhoto(photoFile) {
+        const formData = new FormData();
+        formData.append('image', photoFile);
+        const response = await axiosSocial.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        return response.data;
     }
 }
 
@@ -57,8 +68,8 @@ export const followAPI = {
 }
 
 export const authAPI = {
-    login(email, password, rememberMe = false) {
-        return axiosSocial.post(`auth/login`, { email, password, rememberMe })
+    login(payload) {
+        return axiosSocial.post(`auth/login`, payload)
             .then(response => response.data)
             .catch(e => {throw e});
     },
@@ -68,4 +79,12 @@ export const authAPI = {
             .then(response => response.data)
             .catch(e => {throw e});
     }
+}
+
+export const securityAPI = {
+    getCaptchaURL() {
+        return axiosSocial.get('security/get-captcha-url')
+            .then(response => response.data)
+            .catch(e => {throw e});
+    },
 }

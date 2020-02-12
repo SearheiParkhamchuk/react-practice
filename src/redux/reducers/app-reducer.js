@@ -23,8 +23,9 @@ const appReducer = (state = initalState, action) => {
 export const setSuccessInit = () => ({ type: SET_INIT });
 
 export const initializeApp = () => dispatch => {
-    dispatch(getMyProfile());
-    dispatch(setSuccessInit());
+    Promise.all([dispatch(getMyProfile())])
+    .then(() => dispatch(setSuccessInit()))
+    .catch(e => console.error(e))
 }
 
 export default appReducer;

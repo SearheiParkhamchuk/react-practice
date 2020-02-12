@@ -24,24 +24,23 @@ const AddPostForm = props => {
 }
 
 const AddPostReduxForm = reduxForm({ form: 'addPost' })(AddPostForm);
-class MyPosts extends React.Component {
-    addPost = formData => {
-        this.props.addPost(formData.newPostBody);
+
+const MyPosts = props => {
+    const addPost = formData => {
+        props.addPost(formData.newPostBody);
     };
 
-    render() {
-        const postsItems = this.props.posts.map(post => <Post avatarUrl={post.avatarUrl} title={post.title} />);
-        return (
-            <div>
-                <span>My posts</span>
-                <AddPostReduxForm onSubmit={ this.addPost.bind(this) }/>
-                <div>New post</div>
-                <div className={css.posts}>
-                    { postsItems }
-                </div>
+    const postsItems = props.posts.map(post => <Post avatarUrl={post.avatarUrl} title={post.title} />);
+    return (
+        <div>
+            <span>My posts</span>
+            <AddPostReduxForm onSubmit={ addPost }/>
+            <div>New post</div>
+            <div className={css.posts}>
+                { postsItems }
             </div>
-        )
-    }
-}
+        </div>
+    )
+};
 
-export default MyPosts;
+export default React.memo(MyPosts)

@@ -11,7 +11,8 @@
     "react-scripts": "3.2.0",
     "redux": "^4.0.4",
     "redux-form": "^8.2.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,6 +36,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.1.0"
+    "eslint": "^6.1.0",
+    "react-test-renderer": "^16.8.6"
   }
 }

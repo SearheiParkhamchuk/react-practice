@@ -1,7 +1,7 @@
 import React from 'react';
 import avatar from './../../../assets/avatar.png';
 import { Preloader } from '../../Common/Preloader/preloader';
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusHook from './ProfileStatusHook';
 
 const ProfileInfo = props => {
     if (!props.profile) {
@@ -16,12 +16,19 @@ const ProfileInfo = props => {
         return contactsArray.length === 0 ? <span>No contacts</span> : contactsArray;
     }
 
+    const mainPhotoSelect = e => {
+        props.savePhoto(e.target.files[0]);
+    }
+
     return (
         <div>
-            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
+            <ProfileStatusHook status={props.status} updateUserStatus={props.updateUserStatus} />
             <div>
                 <div>
                     <img src={ props.profile.photos.small || avatar } alt='avatar'/>
+                    {
+                        props.isOwner && <div><input onChange={ mainPhotoSelect } type="file" /></div>
+                    }
                 </div>
                 { getContacts() }
             </div>

@@ -82,7 +82,7 @@ export const currentPageActionCreator = page => ({ type: SET_CURRENT_PAGE, page 
 export const fetchingActionCreator = isFetching => ({ type: SET_FETCH, isFetching });
 export const toggleIsFollowingProgress = (followingInProgress, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, followingInProgress, userId });
 
-export const getUsers = (page, pageSize) => {
+export const getRequestUsers = (page, pageSize) => {
     return dispatch => {
         dispatch(fetchingActionCreator(true));
         usersAPI.getUsers(page, pageSize)

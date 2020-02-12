@@ -12,7 +12,8 @@ class HeaderContainer extends React.Component {
 const mapState = state => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login,
-    profile: state.auth.profile
+    profile: state.auth.profile,
+    userProfile: state.profile.userProfile,
 });
 
 const mapDispatch = { logout }

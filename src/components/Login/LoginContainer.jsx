@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import Login from './Login';
 
 class LoginContainerAPI extends React.Component {
-    componentDidMount() {
-    }
-
     render()  {
         return <>
             <Login />
